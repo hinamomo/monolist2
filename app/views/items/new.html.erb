@@ -4,6 +4,7 @@
     <%= submit_tag "アイテムを検索", name: nil , class: "btn btn-success", data: { disable_with: "検索中..."} %>
   <% end %>
 </div>
+
 <div class="search-result">
   <% if @items.present? %>
     <div class="alert alert-info">
