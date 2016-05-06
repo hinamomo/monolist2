@@ -6,10 +6,10 @@
           <div class="img-wrap">
             <% #TODO 商品画像 %>
             <% large_image = item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') %>
-            <% if large_image.any? %>
-              <%= image_tag(large_image , alt: item['itemName']) %>
+            <% if large_image.nil? %>
+              <%= image_tag("no-image.png" , alt: item['itemName']) %>
             <% else %>
-              <%= image_tag() %>
+              <%= image_tag(large_image , alt: item['itemName']) %>
             <% end %>
           </div>
         </div>
