@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <title>Wantランキング- monolist</title>
+  <meta name="description" content="欲しい人が多い商品のTOP10を表示しています。">
+<% end %>
+<h1>Want ランキング</h1>
+<% @want_items.each do |want_item| %>
+  <div class="container">
+    <div class="container-inner inner-sm clearfix">
+      <h3>第<%= 1 + @want_items.index(want_item) %>位</h3>
+      <%= render "form", item: want_item %>
+      
+      <div class="item-single-side">
+        <div class="side-box">
+          <h4 class="side-box-title">Wantしたユーザー</h4>
+          <div class="side-box-body">
+            <% # Wantしたユーザー一覧 %>
+            <% want_item.want_users.each do |want_user| %>
+              <span class="gravatar">
+                <%= link_to gravatar_for(want_user, size:20), want_user %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<% end %>

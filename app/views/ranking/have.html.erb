@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <title>Haveランキング- monolist</title>
+  <meta name="description" content="持っている人が多い商品のTOP10を表示しています。">
+<% end %>
+<h1>Have ランキング</h1>
+<% @have_items.each do |have_item| %>
+  <div class="container">
+    <div class="container-inner inner-sm clearfix">
+      <h3>第<%= 1 + @have_items.index(have_item) %>位</h3>
+      <%= render "form", item: have_item %>
+      
+      <div class="item-single-side">
+        <div class="side-box">
+          <h4 class="side-box-title">Haveしたユーザー</h4>
+          <div class="side-box-body">
+            <% # Haveしたユーザー一覧 %>
+            <% have_item.have_users.each do |have_user| %>
+              <span class="gravatar">
+                <%= link_to gravatar_for(have_user, size:20), have_user %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<% end %>
